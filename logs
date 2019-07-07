@@ -1,0 +1,35 @@
+2019-07-05T16:28:56.346469+00:00 app[api]: Initial release by user matti.palomaki@helsinki.fi
+2019-07-05T16:28:56.434617+00:00 app[api]: Enable Logplex by user matti.palomaki@helsinki.fi
+2019-07-05T16:28:56.434617+00:00 app[api]: Release v2 created by user matti.palomaki@helsinki.fi
+2019-07-05T16:28:56.346469+00:00 app[api]: Release v1 created by user matti.palomaki@helsinki.fi
+2019-07-05T16:29:06.000000+00:00 app[api]: Build started by user matti.palomaki@helsinki.fi
+2019-07-05T16:29:07.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/3ad6ce38-c7b0-4779-b92a-471bb79969dc/activity/builds/f769caa5-e573-4ef3-9ca1-0e597c20c4f0
+2019-07-05T16:31:26.000000+00:00 app[api]: Build started by user matti.palomaki@helsinki.fi
+2019-07-05T16:31:27.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/3ad6ce38-c7b0-4779-b92a-471bb79969dc/activity/builds/853bb783-0aff-4285-914d-873505b84f46
+2019-07-05T16:32:11.000000+00:00 app[api]: Build started by user matti.palomaki@helsinki.fi
+2019-07-05T16:32:26.000000+00:00 app[api]: Build failed -- check your build output: https://dashboard.heroku.com/apps/3ad6ce38-c7b0-4779-b92a-471bb79969dc/activity/builds/3d42bb41-a4a4-48e0-aafc-4e433f421ca8
+2019-07-05T16:34:40.000000+00:00 app[api]: Build started by user matti.palomaki@helsinki.fi
+2019-07-05T16:35:04.116795+00:00 app[api]: Release v3 created by user matti.palomaki@helsinki.fi
+2019-07-05T16:35:04.135253+00:00 app[api]: Scaled to web@1:Free by user matti.palomaki@helsinki.fi
+2019-07-05T16:35:04.116795+00:00 app[api]: Deploy 68ef53c4 by user matti.palomaki@helsinki.fi
+2019-07-05T16:35:07.494825+00:00 heroku[web.1]: Starting process with command `src/app.py`
+2019-07-05T16:35:10.753848+00:00 heroku[web.1]: State changed from starting to crashed
+2019-07-05T16:35:10.759640+00:00 heroku[web.1]: State changed from crashed to starting
+2019-07-05T16:35:10.737295+00:00 heroku[web.1]: Process exited with status 126
+2019-07-05T16:35:10.673126+00:00 app[web.1]: bash: src/app.py: Permission denied
+2019-07-05T16:35:12.000000+00:00 app[api]: Build succeeded
+2019-07-05T16:35:13.808420+00:00 heroku[web.1]: Starting process with command `src/app.py`
+2019-07-05T16:35:15.972067+00:00 heroku[web.1]: State changed from starting to crashed
+2019-07-05T16:35:15.949155+00:00 heroku[web.1]: Process exited with status 126
+2019-07-05T16:35:15.903116+00:00 app[web.1]: bash: src/app.py: Permission denied
+2019-07-05T16:35:31.474069+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=hkokeilu.herokuapp.com request_id=5c9bc136-23fe-466e-bf00-b6dcec279645 fwd="84.251.68.70" dyno= connect= service= status=503 bytes= protocol=https
+2019-07-05T16:35:32.599885+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=hkokeilu.herokuapp.com request_id=e9cbe997-5984-42b5-95da-cc3c7d876dbe fwd="84.251.68.70" dyno= connect= service= status=503 bytes= protocol=https
+2019-07-05T16:38:07.000000+00:00 app[api]: Build started by user matti.palomaki@helsinki.fi
+2019-07-05T16:38:25.380213+00:00 heroku[web.1]: State changed from crashed to down
+2019-07-05T16:38:25.223288+00:00 app[api]: Release v4 created by user matti.palomaki@helsinki.fi
+2019-07-05T16:38:25.223288+00:00 app[api]: Deploy f4b801cd by user matti.palomaki@helsinki.fi
+2019-07-05T16:38:33.000000+00:00 app[api]: Build succeeded
+2019-07-05T16:38:40.834958+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/" host=hkokeilu.herokuapp.com request_id=eb97f469-100b-4c19-b192-70b55a3eb362 fwd="84.251.68.70" dyno= connect= service= status=503 bytes= protocol=https
+2019-07-05T16:38:41.941526+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/favicon.ico" host=hkokeilu.herokuapp.com request_id=ca25e920-a73b-45d9-8e83-03d2841331ab fwd="84.251.68.70" dyno= connect= service= status=503 bytes= protocol=https
+2019-07-05T16:38:46.347492+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/" host=hkokeilu.herokuapp.com request_id=cf24e32f-e175-4bdf-831b-29e5b079379a fwd="84.251.68.70" dyno= connect= service= status=503 bytes= protocol=https
+2019-07-05T16:38:47.264595+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/favicon.ico" host=hkokeilu.herokuapp.com request_id=d1439221-7d45-42f2-b542-e8105ef10b5d fwd="84.251.68.70" dyno= connect= service= status=503 bytes= protocol=https

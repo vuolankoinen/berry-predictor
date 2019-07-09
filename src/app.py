@@ -1,7 +1,5 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import os
-import ./src/berry-predictor
-#import get-weather-data
 
 class Server(BaseHTTPRequestHandler):
     def do_GET(self):

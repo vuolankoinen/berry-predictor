@@ -1,6 +1,5 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import os
-
 import berry-predictor
 import get-weather-data
 
@@ -15,23 +14,3 @@ def start_server():
 
 if __name__ == "__main__":
     start_server()
-
-
-#import tornado.ioloop
-#import tornado.web
-#import os
-#
-#class MainHandler(tornado.web.RequestHandler):
-#    def get(self):
-#        self.write("Toimii jotankin.")
-#
-#def make_app():
-#    return tornado.web.Application([
-#        (r"/", MainHandler),
-#    ])
-#
-#if __name__ == "__main__":
-#    app = make_app()
-#    app.listen(os.environ['PORT'])
-#    tornado.ioloop.IOLoop.current().start()
-#

@@ -34,7 +34,7 @@ for br in root.iter():
 ind = [16, 0, 17, 1, 18, 2, 19, 3, 20, 4, 21, 5, 22, 6, 23, 7, 24, 8][0:(2*m-2)]
 
 # Start off with the means for input, to be replaced by actual input values where possible
-prediction_input = pd.read_csv('column-means.csv')
+prediction_input = pd.read_csv('../data/column-means.csv')
 prediction_input = prediction_input.set_index(prediction_input.iloc[:, 0])
 prediction_input = prediction_input.iloc[:, 1]
 
@@ -47,4 +47,4 @@ for uu, i in enumerate(range(0, 15, 2)):
     prediction_input[uu + 8] = data[i+1]
     prediction_input[uu + 24] = data[i]
 
-prediction_input.to_csv('recent.csv')
+prediction_input.to_csv('../data/recent.csv')

@@ -1,14 +1,14 @@
-import urllib.request # https://docs.python.org/3.7/library/urllib.request.html#module-urllib.request
+import urllib.request
 import urllib.parse
 import sys
 import time
+import os
 import pandas as pd
 import xml.etree.ElementTree as et
 
-# Get the weather data from this year and part of the last
-begin = 'http://data.fmi.fi/fmi-apikey/' + sys.argv[1]
-# starttime = '2018-09-01T01:00:00Z'
-# endtime = '2019-06-24T10:30:00Z'
+# Get recent meteorological data
+begin = 'http://data.fmi.fi/fmi-apikey/' + os.environ['FMI-API']
+# begin = 'http://data.fmi.fi/fmi-apikey/' + sys.argv[1]
 y = int(time.strftime('%Y'))
 m = int(time.strftime('%m'))
 m = min(m, 8) # Months after the harvest have no effect on the harvest
@@ -21,9 +21,6 @@ root = et.fromstring(FIMresponse)
 for br in root.iter():
     if br.tag == '{http://www.opengis.net/gml/3.2}doubleOrNilReasonTupleList':
         data = list(map(float, br.text.split()))
-
-# More measurements would be given by the query
-# req = begin + '/wfs?request=getFeature&storedquery_id=fmi::observations::weather::multipointcoverage&place=Helsinki&starttime=' + starttime  + '&endtime=' + endtime + '&timestep=120&parameters=r_1h,t2m,ws_10min,wg_10min,wd_10min,rh,td,p_sea,vis,n_man'
 
 # The index picks the data from the months that have already passed this year,
 # interlacing the temperature and rain measurements.
@@ -47,4 +44,6 @@ for uu, i in enumerate(range(0, 15, 2)):
     prediction_input[uu + 8] = data[i+1]
     prediction_input[uu + 24] = data[i]
 
+# Save the result
+prediction_input = pd.DataFrame(prediction_input)
 prediction_input.to_csv('../data/recent.csv')

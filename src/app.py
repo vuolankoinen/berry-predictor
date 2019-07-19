@@ -1,15 +1,26 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import os
 from keras.models import load_model
+import pandas as pd
 
 class Server(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        self.wfile.write(b'Toimii jotenkin.')
+        # prediction_text = 'Berry prediction:\nAt this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.'.format(pred_lingonberries()[0][0])
+        prediction_text = 'Toimii jotenkin!'
+        self.wfile.write(prediction_text)
+        #self.wfile.write(b'Toimii jotenkin.')
 
 def start_server():
     HTTPServer(('', int(os.environ['PORT'])), Server).serve_forever()
+
+def pred_lingonberries():
+    net = load_model('nnet/Lingonberry-Lapland.net')
+    recent = pd.read_csv('../data/recent.csv')
+    rec = pd.DataFrame(columns=range(0, len(recent)))
+    rec.loc[0] = list(recent.iloc[:, 1])
+    return(net.predict(rec))
 
 if __name__ == "__main__":
     start_server()

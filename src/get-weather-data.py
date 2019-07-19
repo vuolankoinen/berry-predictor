@@ -8,7 +8,6 @@ import xml.etree.ElementTree as et
 
 # Get recent meteorological data
 begin = 'http://data.fmi.fi/fmi-apikey/' + os.environ['FMI-API']
-# begin = 'http://data.fmi.fi/fmi-apikey/' + sys.argv[1]
 y = int(time.strftime('%Y'))
 m = int(time.strftime('%m'))
 m = min(m, 8) # Months after the harvest have no effect on the harvest

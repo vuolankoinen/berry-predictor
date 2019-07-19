@@ -14,7 +14,12 @@ data.columns = ['year', 'month', 'x1', 'x2', 'x3', 'rain', 'T']
 data = data[['year', 'month', 'rain', 'T']]
 
 # Variables are rain and temperature for the preceeding months and the berry sales of the preceeding months.
-X_Lappi = pd.DataFrame(columns=list(map(lambda x : x+"T", map(str, range(1,17)))) + list(map(lambda x : x+"R", map(str, range(1,17)))))
+X_Lappi = pd.DataFrame(columns =
+list(map(lambda x : x+"T", map(str, range(1,9)))) +
+list(map(lambda x : x+"T-prev", map(str, range(5,13)))) +
+list(map(lambda x : x+"R", map(str, range(1,9)))) +
+list(map(lambda x : x+"R-prev", map(str, range(5,13))))
+)
 
 for ye in years:
     new = []

@@ -8,8 +8,17 @@ class Server(BaseHTTPRequestHandler):
         self.send_response(200)
         self.end_headers()
         prediction_text = 'Berry prediction:\nAt this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.'.format(pred_lingonberries()[0][0])
-        self.wfile.write(prediction_text.encode())
+        #self.wfile.write(prediction_text.encode())
+        self.wfile.write(list_files().encode())
         #self.wfile.write(b'Toimii jotenkin.')
+
+def list_files():
+    res = ""
+    for root, dirs, files in os.walk("."):
+        for filename in files:
+            res = res + "\n" + filename
+    #for r, d, f in os.walk("../data"):
+    return res
 
 def start_server():
     HTTPServer(('', int(os.environ['PORT'])), Server).serve_forever()

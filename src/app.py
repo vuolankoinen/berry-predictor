@@ -9,7 +9,7 @@ class Server(BaseHTTPRequestHandler):
         self.end_headers()
         # prediction_text = 'Berry prediction:\nAt this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.'.format(pred_lingonberries()[0][0])
         #self.wfile.write(prediction_text.encode())
-        self.wfile.write(list_files().encode())
+        self.wfile.write(os.getcwd().encode())
         #self.wfile.write(b'Toimii jotenkin.')
 
 def list_files():

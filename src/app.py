@@ -7,10 +7,11 @@ class Server(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
+        prediction_test = ""
         try:
             prediction_text = 'Berry prediction:\nAt this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.'.format(pred_lingonberries()[0][0])
         except:
-            prediction_text = 'File not found at ../src/nnet/'
+            prediction_text = prediction_test + 'File not found at ../src/nnet/'
         try:
             net = load_model('./nnet/Lingonberry-Lapland.net')
         except:
@@ -22,8 +23,8 @@ class Server(BaseHTTPRequestHandler):
         os.chdir('..')
         self.wfile.write((os.getcwd() + '\n').encode())
         # self.wfile.write(list_dirs().encode())
-        self.wfile.write(("\n" + list_dir('.') + "\n").encode())
-        self.wfile.write(("\n" + list_dir('..') + "\n").encode())
+        self.wfile.write(("<p>listdir .: " + list_dir('.') + "</p>").encode())
+        self.wfile.write(("<p>listdir ..:" + list_dir('..') + "</p>").encode())
 
 def list_files():
     res = ""

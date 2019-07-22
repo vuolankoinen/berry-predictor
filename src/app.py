@@ -14,7 +14,7 @@ class Server(BaseHTTPRequestHandler):
         self.wfile.write(b'Toimii jotenkin.')
         os.chdir('..')
         self.wfile.write((os.getcwd() + '\n').encode())
-        self.wfile.write(list_dirs().encode())
+        # self.wfile.write(list_dirs().encode())
         self.wfile.write(("\n" + list_dir('.') + "\n").encode())
         self.wfile.write(("\n" + list_dir('..') + "\n").encode())
 

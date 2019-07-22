@@ -11,11 +11,11 @@ class Server(BaseHTTPRequestHandler):
         try:
             prediction_text = 'Berry prediction:\nAt this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.'.format(pred_lingonberries()[0][0])
         except:
-            prediction_text = prediction_test + 'File not found at ../src/nnet/'
+            prediction_text = prediction_test + '<p>File not found at ../src/nnet/</p>'
         try:
             net = load_model('./nnet/Lingonberry-Lapland.net')
         except:
-            prediction_text = 'File not found at ./nnet/'
+            prediction_text = prediction_text + '<p>File not found at ./nnet/</p>'
         self.wfile.write(prediction_text.encode())
         # self.wfile.write(list_dirs().encode())
         self.wfile.write((os.getcwd() + '\n').encode())

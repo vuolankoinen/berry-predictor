@@ -18,9 +18,9 @@ class Server(BaseHTTPRequestHandler):
             prediction_text = prediction_text + '<p>File not found at ./nnet/</p>'
         self.wfile.write(prediction_text.encode())
         # self.wfile.write(list_dirs().encode())
-        self.wfile.write((os.getcwd() + '\n').encode())
         # self.wfile.write(b'Toimii jotenkin.')
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd())) + "</p>").encode())
+        self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd() + '/src')) + "</p>").encode())
         os.chdir('..')
         self.wfile.write(('<p>' + os.getcwd() + '</p>').encode())
         # self.wfile.write(list_dirs().encode())

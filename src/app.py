@@ -10,7 +10,11 @@ class Server(BaseHTTPRequestHandler):
         try:
             prediction_text = 'Berry prediction:\nAt this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.'.format(pred_lingonberries()[0][0])
         except:
-            prediction_text = 'File not found''
+            prediction_text = 'File not found at ../src/nnet/'
+        try:
+            net = load_model('./nnet/Lingonberry-Lapland.net')
+        except:
+            prediction_text = 'File not found at ./nnet/'
         self.wfile.write(prediction_text.encode())
         # self.wfile.write(list_dirs().encode())
         self.wfile.write((os.getcwd() + '\n').encode())
@@ -32,8 +36,8 @@ def list_files():
 def list_dirs():
     res = ""
     # for root, dirs, files in os.walk("."):
-    root, dirs, files = os.walk(".")
-    for d in dirs:
+    r = os.walk(".")
+    for d in r[1]:
         res = res + "\n" + d
     #for r, d, f in os.walk("../data"):
     return res

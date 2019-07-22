@@ -23,8 +23,8 @@ class Server(BaseHTTPRequestHandler):
         os.chdir('..')
         self.wfile.write(('<p>' + os.getcwd() + '</p>').encode())
         # self.wfile.write(list_dirs().encode())
-        self.wfile.write(("<p>listdir .: " + os.listdir('.') + "</p>").encode())
-        self.wfile.write(("<p>listdir ..:" + os.listdir('..') + "</p>").encode())
+        self.wfile.write(("<p>listdir .: " + str(os.listdir('.')) + "</p>").encode())
+        self.wfile.write(("<p>listdir ..:" + str(os.listdir('..')) + "</p>").encode())
 
 def list_files():
     res = ""

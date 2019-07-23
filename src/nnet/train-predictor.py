@@ -71,6 +71,12 @@ def build_net(X, Y):
     net.fit(X, Y, epochs = 1000)
     return net
 
+
 Y_ll = sales_data('lingonberry', 'lapland')
 build_net(X_Lappi, Y_ll).save("lingonberry-lapland.net")
 
+Y_cl = sales_data('cloudberry', 'lapland')
+build_net(X_Lappi, Y_cl).save("cloudberry-lapland.net")
+
+Y_bl = sales_data('blueberry', 'lapland')
+build_net(X_Lappi, Y_bl).save("blueberry-lapland.net")

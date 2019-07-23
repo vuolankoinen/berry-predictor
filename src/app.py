@@ -13,6 +13,18 @@ class Server(BaseHTTPRequestHandler):
             prediction_text = '<p>Prediction was unsuccesful:<br>' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())
 
+        try:
+            prediction_text = '<p>At this time, the predicted amount of blueberries to reach sales in Lapland is {:1.1f} tons.</p>'.format(predict('blueberry-lapland')[0][0])
+        except Exception as e:
+            prediction_text = '<p>Prediction was unsuccesful:<br>' + str(e) + '</p>'
+        self.wfile.write(prediction_text.encode())
+
+        try:
+            prediction_text = '<p>At this time, the predicted amount of cloudberries to reach sales in Lapland is {:1.1f} tons.</p>'.format(predict('cloudberry-lapland')[0][0])
+        except Exception as e:
+            prediction_text = '<p>Prediction was unsuccesful:<br>' + str(e) + '</p>'
+        self.wfile.write(prediction_text.encode())
+
 def start_server():
     HTTPServer(('', int(os.environ['PORT'])), Server).serve_forever()
 

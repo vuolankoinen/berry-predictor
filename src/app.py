@@ -19,11 +19,9 @@ class Server(BaseHTTPRequestHandler):
         try:
             net = load_model(os.getcwd() + 'src/nnet/Lingonberry-Lapland.net')
             prediction_text = prediction_text + '<p>File found!</p>'
-        except e:
+        except Exception as e:
             prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet:' + e + '</p>'
         self.wfile.write(prediction_text.encode())
-        # self.wfile.write(list_dirs().encode())
-        # self.wfile.write(b'Toimii jotenkin.')
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd())) + "</p>").encode())
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd() + '/src')) + "</p>").encode())
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd() + '/src/nnet')) + "</p>").encode())
@@ -33,23 +31,6 @@ class Server(BaseHTTPRequestHandler):
         self.wfile.write(("<p>listdir .: " + str(os.listdir('.')) + "</p>").encode())
         self.wfile.write(("<p>listdir ..:" + str(os.listdir('..')) + "</p>").encode())
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd())) + "</p>").encode())
-
-def list_files():
-    res = ""
-    for root, dirs, files in os.walk("."):
-        for filename in files:
-            res = res + "\n" + filename
-    #for r, d, f in os.walk("../data"):
-    return res
-
-def list_dirs():
-    res = ""
-    # for root, dirs, files in os.walk("."):
-    r = os.walk(".")
-    for d in r[1]:
-        res = res + "\n" + d
-    #for r, d, f in os.walk("../data"):
-    return res
 
 def start_server():
     HTTPServer(('', int(os.environ['PORT'])), Server).serve_forever()

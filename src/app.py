@@ -7,22 +7,25 @@ class Server(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
+        self.wfile.write(b'<h1>Berry predictor</h1>')
+        self.wfile.write(b'<p>Berry prediction for the next season:<br>At this time, the predicted amount of berries to reach sales in Lapland is...</p>')
+        # Lingonberries
         try:
-            prediction_text = '<p>Berry prediction for the next season:<br>At this time, the predicted amount of lingonberries to reach sales in Lapland is {:1.1f} tons.</p>'.format(predict('lingonberry-lapland')[0][0])
+            prediction_text =  '<p>  {:1.1f} tons for <b>lingonberries</b>.</p>'.format(predict('lingonberry-lapland')[0][0])
         except Exception as e:
-            prediction_text = '<p>Prediction was unsuccesful:<br>' + str(e) + '</p>'
+            prediction_text = '<p>Prediction for lingonberries was unsuccesful:<br>' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())
-
+        # Blueberries
         try:
-            prediction_text = '<p>At this time, the predicted amount of blueberries to reach sales in Lapland is {:1.1f} tons.</p>'.format(predict('blueberry-lapland')[0][0])
+            prediction_text = '<p> {:1.1f} tons <b>blueberries</b>.</p>'.format(predict('blueberry-lapland')[0][0])
         except Exception as e:
-            prediction_text = '<p>Prediction was unsuccesful:<br>' + str(e) + '</p>'
+            prediction_text = '<p>Prediction for blueberries was unsuccesful:<br>' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())
-
+        # Cloudberries
         try:
-            prediction_text = '<p>At this time, the predicted amount of cloudberries to reach sales in Lapland is {:1.1f} tons.</p>'.format(predict('cloudberry-lapland')[0][0])
+            prediction_text = '<p> {:1.1f} tons for <b>cloudberries</b>.</p>'.format(predict('cloudberry-lapland')[0][0])
         except Exception as e:
-            prediction_text = '<p>Prediction was unsuccesful:<br>' + str(e) + '</p>'
+            prediction_text = '<p>Prediction for cloudberries was unsuccesful:<br>' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())
 
 def start_server():

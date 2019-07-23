@@ -17,7 +17,7 @@ class Server(BaseHTTPRequestHandler):
         self.wfile.write(prediction_text.encode())
         # Blueberries
         try:
-            prediction_text = '<p> {:1.1f} tons <b>blueberries</b>.</p>'.format(predict('blueberry-lapland')[0][0])
+            prediction_text = '<p> {:1.1f} tons for <b>blueberries</b>.</p>'.format(predict('blueberry-lapland')[0][0])
         except Exception as e:
             prediction_text = '<p>Prediction for blueberries was unsuccesful:<br>' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())

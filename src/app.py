@@ -8,7 +8,7 @@ class Server(BaseHTTPRequestHandler):
         self.send_response(200)
         self.end_headers()
         try:
-            prediction_text = '<p>Berry prediction for the next season:<br>At this time, the predicted amount of lingonberries to reach sales in Lapland is {:1.1f} tons.</p>'.format(predict('Lingonberry-Lapland')[0][0])
+            prediction_text = '<p>Berry prediction for the next season:<br>At this time, the predicted amount of lingonberries to reach sales in Lapland is {:1.1f} tons.</p>'.format(predict('lingonberry-lapland')[0][0])
         except Exception as e:
             prediction_text = '<p>Prediction was unsuccesful:<br>' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())

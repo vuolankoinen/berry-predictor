@@ -23,15 +23,15 @@ list(map(lambda x : x+"R-prev", map(str, range(5,13))))
 
 for ye in years:
     new = []
-    for mo in range(1,9):
+    for mo in range(1, 9):
         new += list(data[data['year'] == ye][data['month'] == mo][['T']].iloc[0])
-    for mo in range(5,13):
-        new += list(data[data['year'] == ye-1][data['month'] == mo][['T']].iloc[0])
-    for mo in range(1,9):
+    for mo in range(5, 13):
+        new += list(data[data['year'] == ye - 1][data['month'] == mo][['T']].iloc[0])
+    for mo in range(1, 9):
         new += list(data[data['year'] == ye][data['month'] == mo][['rain']].iloc[0])
-    for mo in range(5,13):
-        new += list(data[data['year'] == ye-1][data['month'] == mo][['rain']].iloc[0])
-    X_Lappi.loc[ye-1990] = new
+    for mo in range(5, 13):
+        new += list(data[data['year'] == ye - 1][data['month'] == mo][['rain']].iloc[0])
+    X_Lappi.loc[ye - 1990] = new
 X_Lappi['year'] = years
 X_Lappi.set_index('year', inplace = True)
 print(X_Lappi)
@@ -42,11 +42,10 @@ Y = Y['lingonberry-Lapland']
 Y = Y[years]
 mean_Y = np.mean(Y)
 Y = Y / mean_Y
-f = open('../../data/mean-lingonberry-Lapland.dat', 'r')
+f = open('../../data/mean-lingonberry-lapland.dat', 'w')
 f.write(str(mean_Y))
 f.close()
 
-# X_Lappi.mean().to_csv('../../data/column-means.csv')
 F = X_Lappi.mean()
 print(F)
 F = F.to_frame()
@@ -71,9 +70,9 @@ net.fit(X_Lappi, Y, epochs = 1000)
 net.summary()
 
 # Save the net
-net.save("Lingonberry-Lapland.net")
+net.save("lingonberry-lapland.net")
 
 # Print the results on training data
 for ye in years:
-    print("Year ", ye, ": prediction ", np.round(net.predict(np.array(X_Lappi.loc[ye:ye]))[0][0]*mean_Y, decimals = 1), ", true amount ", Y[ye]*mean_Y, ".", sep="")
+    print("Year ", ye, ": prediction ", np.round(net.predict(np.array(X_Lappi.loc[ye:ye]))[0][0] * mean_Y, decimals = 1), ", true amount ", Y[ye] * mean_Y, ".", sep="")
 

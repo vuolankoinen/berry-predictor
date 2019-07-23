@@ -38,7 +38,7 @@ def predict(case):
         mean = float(f.readline())
     rec = pd.DataFrame(columns = range(0, len(recent)))
     rec.loc[0] = list(recent.iloc[:, 1])
-    return net.predict(rec * mean)
+    return net.predict(rec)*mean
 
 if __name__ == "__main__":
     start_server()

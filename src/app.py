@@ -18,7 +18,7 @@ def start_server():
 
 def predict(case):
     net = load_model(os.getcwd() + '/src/nnet/' + case + '.net')
-    recent = pd.read_csv(os.getcwd() + '/data/recent.csv')
+    recent = pd.read_csv(os.getcwd() + '/data/inputs-recent.csv')
     with open(os.getcwd() + '/data/mean-' + case + '.dat') as f:
         mean = float(f.readline())
     rec = pd.DataFrame(columns = range(0, len(recent)))

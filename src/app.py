@@ -9,7 +9,7 @@ class Server(BaseHTTPRequestHandler):
         self.end_headers()
         prediction_text = '<p>' + os.getcwd() + '</p>'
         try:
-            prediction_text = '<p>Berry prediction:<br>At this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.</p>'.format(pred_lingonberries()[0][0])
+            prediction_text = '<p>Berry prediction:<br>At this time, the predicted amount of lingonberries to reach sales in Lapland is {:1.1f} tons.</p>'.format(pred_lingonberries()[0][0])
         except Exception as e:
             prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet: ' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())

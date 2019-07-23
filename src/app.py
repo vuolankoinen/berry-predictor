@@ -9,18 +9,10 @@ class Server(BaseHTTPRequestHandler):
         self.end_headers()
         prediction_test = ""
         try:
-            prediction_text = 'Berry prediction:\nAt this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.'.format(pred_lingonberries()[0][0])
-        except:
-            prediction_text = prediction_test + '<p>File not found at ../src/nnet/</p>'
-        try:
-            net = load_model('./nnet/Lingonberry-Lapland.net')
-        except:
-            prediction_text = prediction_text + '<p>File not found at ./nnet/</p>'
-        try:
             net = load_model(os.getcwd() + '/src/nnet/Lingonberry-Lapland.net')
-            prediction_text = prediction_text + '<p>File found!</p>'
+            prediction_text = 'Berry prediction:\nAt this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.'.format(pred_lingonberries()[0][0])
         except Exception as e:
-            prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet:' + str(e) + '</p>'
+            prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet: ' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd())) + "</p>").encode())
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd() + '/src')) + "</p>").encode())

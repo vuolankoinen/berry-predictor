@@ -16,6 +16,11 @@ class Server(BaseHTTPRequestHandler):
             net = load_model('./nnet/Lingonberry-Lapland.net')
         except:
             prediction_text = prediction_text + '<p>File not found at ./nnet/</p>'
+        try:
+            net = load_model(os.getcwd() + 'src/nnet/Lingonberry-Lapland.net')
+            prediction_text = prediction_text + '<p>File not found at ./nnet/</p>'
+        except:
+            prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet</p>'
         self.wfile.write(prediction_text.encode())
         # self.wfile.write(list_dirs().encode())
         # self.wfile.write(b'Toimii jotenkin.')

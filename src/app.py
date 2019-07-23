@@ -9,7 +9,6 @@ class Server(BaseHTTPRequestHandler):
         self.end_headers()
         prediction_text = '<p>' + os.getcwd() + '</p>'
         try:
-            net = load_model(os.getcwd() + '/src/nnet/Lingonberry-Lapland.net')
             prediction_text = '<p>Berry prediction:<br>At this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.</p>'.format(pred_lingonberries()[0][0])
         except Exception as e:
             prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet: ' + str(e) + '</p>'
@@ -24,7 +23,7 @@ def start_server():
     HTTPServer(('', int(os.environ['PORT'])), Server).serve_forever()
 
 def pred_lingonberries():
-    net = load_model('../src/nnet/Lingonberry-Lapland.net')
+    net = load_model(os.getcwd() + '/src/nnet/Lingonberry-Lapland.net')
     recent = pd.read_csv('../data/recent.csv')
     rec = pd.DataFrame(columns=range(0, len(recent)))
     rec.loc[0] = list(recent.iloc[:, 1])

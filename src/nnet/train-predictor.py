@@ -49,7 +49,7 @@ f.close()
 F = X_Lappi.mean()
 print(F)
 F = F.to_frame()
-F.to_csv('../../data/column-means.csv')
+F.to_csv('../../data/inputs-column-means.csv')
 print('***')
 print(F)
 

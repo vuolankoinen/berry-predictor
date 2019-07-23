@@ -27,7 +27,7 @@ def pred_lingonberries():
     recent = pd.read_csv(os.getcwd() + '/data/recent.csv')
     rec = pd.DataFrame(columns = range(0, len(recent)))
     rec.loc[0] = list(recent.iloc[:, 1])
-    return(net.predict(rec))
+    return net.predict(rec)
 
 if __name__ == "__main__":
     start_server()

@@ -17,7 +17,7 @@ class Server(BaseHTTPRequestHandler):
         except:
             prediction_text = prediction_text + '<p>File not found at ./nnet/</p>'
         try:
-            net = load_model(os.getcwd() + 'src/nnet/Lingonberry-Lapland.net')
+            net = load_model(os.getcwd() + '/src/nnet/Lingonberry-Lapland.net')
             prediction_text = prediction_text + '<p>File found!</p>'
         except Exception as e:
             prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet:' + str(e) + '</p>'

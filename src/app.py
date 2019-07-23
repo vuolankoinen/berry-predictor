@@ -7,7 +7,7 @@ class Server(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        prediction_text = os.getcwd()
+        prediction_text = '<p>' + os.getcwd() + '</p'>
         try:
             net = load_model(os.getcwd() + '/src/nnet/Lingonberry-Lapland.net')
             prediction_text = '<p>Berry prediction:<br>At this time, the predicted amount of lingonberries to reach sales in Lapland is {} tons.</p>'.format(pred_lingonberries()[0][0])

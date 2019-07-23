@@ -42,6 +42,9 @@ Y = Y['lingonberry-Lapland']
 Y = Y[years]
 mean_Y = np.mean(Y)
 Y = Y / mean_Y
+f = open('../../data/mean-lingonberry-Lapland.dat', 'r')
+f.write(str(mean_Y))
+f.close()
 
 # X_Lappi.mean().to_csv('../../data/column-means.csv')
 F = X_Lappi.mean()

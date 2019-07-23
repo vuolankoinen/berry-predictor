@@ -24,8 +24,8 @@ def start_server():
 
 def pred_lingonberries():
     net = load_model(os.getcwd() + '/src/nnet/Lingonberry-Lapland.net')
-    recent = pd.read_csv('../data/recent.csv')
-    rec = pd.DataFrame(columns=range(0, len(recent)))
+    recent = pd.read_csv(os.getcwd() + '/data/recent.csv')
+    rec = pd.DataFrame(columns = range(0, len(recent)))
     rec.loc[0] = list(recent.iloc[:, 1])
     return(net.predict(rec))
 

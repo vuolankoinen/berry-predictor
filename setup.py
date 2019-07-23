@@ -14,7 +14,7 @@ m = min(m, 8) # Months after the harvest have no effect on the harvest
 last_year = 8 # How many months are used from last year in training the net? 7 = June - December
 starttime = time.strftime('{}-{:02d}-01T00:00:00Z'.format(y-1, 13-last_year))
 endtime = time.strftime('{}-{:02d}-01T00:00:00Z'.format(y,m))
-req = begin + '/wfs?request=getFeature&storedquery_id=fmi::observations::weather::monthly::multipointcoverage&place=Kittil' + urllib.parse.quote('ä') + '&Starttime=' + starttime + '&endtime=' + endtime + '&'
+req = begin + '/wfs?request=getFeature&storedquery_id=fmi::observations::weather::monthly::multipointcoverage&place=Pello&Starttime=' + starttime + '&endtime=' + endtime + '&'
 FIMresponse = urllib.request.urlopen(req).read().decode("utf-8")
 root = et.fromstring(FIMresponse)
 for br in root.iter():
@@ -30,7 +30,7 @@ for br in root.iter():
 ind = [16, 0, 17, 1, 18, 2, 19, 3, 20, 4, 21, 5, 22, 6, 23, 7, 24, 8][0:(2*m-2)]
 
 # Start off with the means for input, to be replaced by actual input values where possible
-prediction_input = pd.read_csv('data/column-means.csv')
+prediction_input = pd.read_csv('data/inputs-column-means.csv')
 prediction_input = prediction_input.set_index(prediction_input.iloc[:, 0])
 prediction_input = prediction_input.iloc[:, 1]
 
@@ -45,4 +45,4 @@ for uu, i in enumerate(range(0, 15, 2)):
 
 # Save the result
 prediction_input = pd.DataFrame(prediction_input)
-prediction_input.to_csv('data/recent.csv')
+prediction_input.to_csv('data/inputs-recent.csv')

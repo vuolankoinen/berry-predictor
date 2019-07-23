@@ -20,7 +20,7 @@ class Server(BaseHTTPRequestHandler):
             net = load_model(os.getcwd() + 'src/nnet/Lingonberry-Lapland.net')
             prediction_text = prediction_text + '<p>File found!</p>'
         except Exception as e:
-            prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet:' + e + '</p>'
+            prediction_text = prediction_text + '<p>File not found at getcwd/src/nnet:' + str(e) + '</p>'
         self.wfile.write(prediction_text.encode())
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd())) + "</p>").encode())
         self.wfile.write(("<p>listdir get:" + str(os.listdir(os.getcwd() + '/src')) + "</p>").encode())
